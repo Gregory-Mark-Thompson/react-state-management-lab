@@ -2,15 +2,26 @@
   margin: 16px;
 }
 
+.firstSection {
+  color: whitesmoke;
+}
+
 ul {
   display: flex;
   flex-wrap: wrap;
 }
 
+
 li {
+  color: whitesmoke;
   list-style: none;
   margin: 8px;
   padding: 8px;
   border: whitesmoke 3px solid;
   border-radius: 8px;
+}
+
+
+body {
+  background-color: rgb(36, 35, 35);
 }
