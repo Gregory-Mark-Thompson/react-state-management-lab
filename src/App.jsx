@@ -1,8 +1,8 @@
 import './App.css';
 import ZombieFighter from './components/ZombieFighter/ZombieFighter.jsx'
 import {useState} from "react"
-let strength = 0;
-let agility = 0;
+let totalStrength = 0;
+let totalAgility = 0;
 
 const App = () => {
   const [team, setTeam] = useState ([]);
@@ -98,8 +98,8 @@ function handleAddFighter (fighter) {
     f.id !== fighter.id
   )
   setZombieFighters (updatedZombieFighters)
-  strength+=fighter.strength;
-  agility+=fighter.agility;
+  totalStrength+=fighter.strength;
+  totalAgility+=fighter.agility;
 }
 function handleMoney (price) {
   setMoney (money-price);
@@ -115,8 +115,8 @@ function handleRemoveFighter (fighter) {
   )
   setTeam (updatedTeam)
   setZombieFighters ([fighter, ...zombieFighters])
-  strength-=fighter.strength;
-  agility-=fighter.agility;
+  totalStrength-=fighter.strength;
+  totalAgility-=fighter.agility;
 }
 
   return (
@@ -124,8 +124,8 @@ function handleRemoveFighter (fighter) {
     <section className="firstSection">
     <h1>Zombie Fighters</h1>
     <h2>Money: {money}</h2>
-    <h2>Team Strength: {strength}</h2>
-    <h2>Team Agility: {agility}</h2>
+    <h2>Team Strength: {totalStrength}</h2>
+    <h2>Team Agility: {totalAgility}</h2>
     <h2>Team</h2>
     <ul>{team.length?team.map((fighter) => (
             <li key={fighter.id}><ZombieFighter
@@ -135,6 +135,7 @@ function handleRemoveFighter (fighter) {
             handleAddMoney={handleAddMoney}
             handleRemoveFighter={handleRemoveFighter}
             isTeam = {true}
+            money = {money}
             /></li>
     )):<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pick some team members!</p>}
     </ul>
@@ -151,6 +152,7 @@ function handleRemoveFighter (fighter) {
             handleAddMoney={handleAddMoney}
             handleRemoveFighter={handleRemoveFighter}
             isTeam = {false}
+            money = {money}
             /></li>
       ))}
       </ul>

@@ -1,11 +1,14 @@
 import './ZombieFighter.css';
 
-const ZombieFighter = ({fighter, handleAddFighter, handleMoney, handleAddMoney, handleRemoveFighter, isTeam}) => {
+const ZombieFighter = ({fighter, handleAddFighter, handleMoney, handleAddMoney, handleRemoveFighter, isTeam, money}) => {
     function handleTeam () {
         if (isTeam) {
             handleRemoveFighter(fighter);
             handleAddMoney(fighter.price);
-        } else {
+        } else if (money-fighter.price<0) {
+            console.log("Not enough money!");
+        }
+        else {
             handleAddFighter(fighter);
             handleMoney(fighter.price);
         }   
